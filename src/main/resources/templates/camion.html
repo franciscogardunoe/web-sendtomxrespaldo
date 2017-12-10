@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Paquetería SendToMX</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+        <script type="text/javascript">
+            // A $( document ).ready() block.
+            $(document).ready(function() {
+                console.log("ready!");
+                $.ajax({
+                    url: "/paqueteria/camiones",
+                }).done(function(data) {
+                    console.log(data);
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        <form th:action="@{unCamion}" th:object="${unCamion}" method="post">
+            <label>Número de Carro: </label>
+            <input type="text" th:field="*{numeroCarro}" /> <p></p>
+            <label>Número de placas: </label>
+            <input type="text" th:field="*{numeroPlacas}" /> <p></p>
+            <label>Capacidad: </label>
+            <input type="text" th:field="*{capacidad}" /><p></p>
+            <input type="submit" value="Registrar"/>
+        </form>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Numero de carro</th>
+                <th>Numero de placas</th>
+                <th>Capacidad</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="c : ${camiones}" align="center">
+                <td th:text="${c.idCamion}"></td>
+                <td th:text="${c.numeroCarro}"></td>
+                <td th:text="${c.numeroPlacas}"></td>
+                <td th:text="${c.capacidad}"></td>
+                <td><a th:href="@{'findCamion/' + ${c.idCamion}}"><input type="button" value="Modificar"/></a></td>
+                <td><a th:href="@{'deleteCamion/' + ${c.idCamion}}"><input type="button" value="Eliminar"/></a></td>
+            </tr>
+        </table>
+       
+    </body>
+</html>

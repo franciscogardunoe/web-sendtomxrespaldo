@@ -1,0 +1,23 @@
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/enviosdelsenor
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+
+thymeleaf:
+    cache: false
+    
+#Asignarle un nuevo puerto puerto
+server:
+    error:
+        whitelabel:
+            enabled: false
+    context-path: /paqueteria
+    port: 8084
+        
+#jpa:
+#    show-sql: true
+    
+#    hibernate:
+#        ddl-auto: create

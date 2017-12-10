@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery.serializejson.js}"></script>
+        <script type="text/javascript">
+            // A $( document ).ready() block.
+            $(document).ready(function () {
+                console.log("ready!");
+                $("#save").click(function () {
+                    saveAlumno();
+                });
+            });
+            function saveAlumno(){
+                
+            }
+        </script>
+    </head>
+    <body>
+        <form th:action="@{unCamion}" th:object="${camion}" method="post">
+            <label>Número de Carro: </label>
+            <input type="text" th:field="*{numeroCarro}" th:value="${numeroCarro}"/> <p></p>
+            <label>Número de placas: </label>
+            <input type="text" th:field="*{numeroPlacas}" th:value="${numeroPlacas}"/> <p></p>
+            <label>Capacidad: </label>
+            <input type="text" th:field="*{capacidad}" th:value="${capacidad}"/><p></p>
+            <button id="save">Guardar</button>>
+        </form>
+    </body>
+</html>
