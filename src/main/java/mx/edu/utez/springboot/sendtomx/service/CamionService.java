@@ -21,8 +21,6 @@ public interface CamionService {
     void saveCamion(Camion camion);
 
     Camion getCamionById(Integer id);
-    
-    void editCamion(Camion camion);
 
     public Camion findCamionByIdCamion(Integer idCamion);
 

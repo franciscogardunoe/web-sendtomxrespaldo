@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
         
         
-       <form th:action="@{editCamion}" th:object="${editCamion}" th:method="PUT">
+       <form th:action="@{/camion/unCamion}" th:object="${editCamion}" method="post">
            <input type="text" th:field="*{idCamion}" th:value="${idCamion}"/> <p></p>
             <label>Número de Carro: </label>
             <input type="text" th:field="*{numeroCarro}" th:value="${numeroCarro}"/> <p></p>

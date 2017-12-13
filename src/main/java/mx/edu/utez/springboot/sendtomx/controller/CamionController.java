@@ -44,20 +44,12 @@ public class CamionController {
     @GetMapping("findCamion/{id}")
     public String findCamion(@PathVariable Integer id, Model model) {
         model.addAttribute("editCamion", camionService.getCamionById(id));
-        //model.addAttribute("editCamion", new Camion());
         return "modificar";
     }
 
     @GetMapping("deleteCamion/{id}")
     public String deleteCamion(@PathVariable Integer id) {
         camionService.deleteCamion(id);
-        return "redirect:/camion/goCamion";
-    }
-
-    @CrossOrigin
-    @RequestMapping(value = "/editCamion", method = RequestMethod.PUT)
-    public String editCamion(Camion camion) {
-        camionService.editCamion(camion);
         return "redirect:/camion/goCamion";
     }
 }

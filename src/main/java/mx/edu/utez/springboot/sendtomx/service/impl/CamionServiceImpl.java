@@ -50,13 +50,4 @@ public class CamionServiceImpl implements CamionService {
         return camionRepository.findCamionByIdCamion(idCamion);
     }
 
-    @Override
-    public void editCamion(Camion camion) {
-        System.out.println(camion.getNumeroCarro() + "" + camion.getNumeroPlacas() + "" + camion.getCapacidad() + "" + camion.getIdCamion());
-        System.out.println("objeto"+camion.getIdCamion());
-        
-        
-        //camionRepository.updateCamion(camion.getNumeroCarro(), camion.getNumeroPlacas(), camion.getCapacidad(), camion.getIdCamion());
-    }
-
 }

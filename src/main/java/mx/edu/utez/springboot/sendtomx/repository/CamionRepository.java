@@ -21,9 +21,5 @@ public interface CamionRepository extends JpaRepository<Camion, Serializable> {
 
     public Camion findCamionByIdCamion(Integer idCamion);
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Camion SET numeroCarro = :numeroCarro, numeroPlacas = :numeroPlacas, capacidad = :capacidad WHERE idCamion = :idCamion")
-    int updateCamion(@Param("numeroCarro") int numeroCarro, @Param("numeroPlacas") String numeroPlacas, @Param("capacidad") double capacidad, @Param("idCamion") int idCamion);
     //EJEMPLO public List<Camion> findCamionByNumeroPlacasOrCapacidad(int numeroPlacas, int capacidad);
 }
