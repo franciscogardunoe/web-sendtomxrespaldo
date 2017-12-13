@@ -65,9 +65,6 @@ and open the template in the editor.
                             </div>
                             <!-- Navbar Menu -->
                             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                                <!-- Search-->
-                                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>                                                                                          
-                                <!-- Logout    -->
                                 <li class="nav-item"><a href="login.html" class="nav-link logout">Cerrar Sesión<i class="fa fa-sign-out"></i></a></li>
                             </ul>
                         </div>
@@ -88,12 +85,12 @@ and open the template in the editor.
                     <!-- Sidebar Navidation Menus--><span class="heading">Menú Principal</span>
                     <ul class="list-unstyled">
                         <li class="active"> <a href="./"><i class="icon-home"></i>Inicio</a></li>                       
-                        <li> <a th:href="@{/cliente/goCliente}"> <i class="fa fa-user"></i>Clientes</a></li>
-                        <li> <a th:href="@{/paquete/goPaquete}"> <i class="fa fa-briefcase"></i>Paquetes</a></li>
-                        <li> <a th:href="@{/camion/goCamion}"> <i class="fa fa-bus"></i>Camiones</a></li>
-                        <li> <a th:href="@{/operador/goOperador}"> <i class="fa fa-drivers-license"></i>Operadores</a></li>
-                        <li> <a th:href="@{/asignarCamion/goAsignacionCamion}">> <i class="fa fa-list"></i>Asignación Camiones</a></li>
-                        <li> <a th:href="@{/asignarPaquete/goAsignacionPaquete}"> <i class="fa fa-send"></i>Asignación Paquetes</a></li>
+                        <li> <a href="tables.html"> <i class="fa fa-user"></i>Clientes</a></li>
+                        <li> <a href="charts.html"> <i class="fa fa-briefcase"></i>Paquetes</a></li>
+                        <li> <a href="forms.html"> <i class="fa fa-bus"></i>Camiones</a></li>
+                        <li> <a href="login.html"> <i class="fa fa-drivers-license"></i>Operadores</a></li>
+                        <li> <a href="forms.html"> <i class="fa fa-list"></i>Asignación Camiones</a></li>
+                        <li> <a href="forms.html"> <i class="fa fa-send"></i>Asignación Paquetes</a></li>
                     </ul>
                 </nav>
                 <div class="content-inner">
@@ -107,77 +104,38 @@ and open the template in the editor.
                     <ul class="breadcrumb">
                         <div class="container-fluid">
                             <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                            <li class="breadcrumb-item active">Camiones</li>
+                            <li class="breadcrumb-item">Camiones</li>
+                            <li class="breadcrumb-item active">Modificar</li>
                         </div>
                     </ul>
                     <section class="tables">   
                         <div class="container-fluid">
-                            <div class="row">  
-                                <!-- Modal Form-->       
+                            <div class="row">
+                                <!-- Basic Form-->
                                 <div class="col-lg-12">
-                                    <div class="card">                                       
+                                    <div class="card">
                                         <div class="card-header d-flex align-items-center">
-                                            <h3 class="h4">Camiones</h3>
-                                        </div> 
-                                        <div class="card-body text-center">
-                                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Nuevo Camión</button>
-                                            <!-- Modal-->                                          
+                                            <h3 class="h4">Modificar Camión</h3>
                                         </div>
                                         <div class="card-body">
-                                            <table class="table table-striped table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Número de carro</th>
-                                                        <th>Número de placas</th>
-                                                        <th>Capacidad</th>
-                                                        <th>Modificar</th>
-                                                        <th>Eliminar</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr th:each="c : ${camiones}" align="center">
-                                                        <th scope="row" th:text="${c.idCamion}"></th>
-                                                        <td th:text="${c.numeroCarro}"></td>
-                                                        <td th:text="${c.numeroPlacas}"></td>
-                                                        <td th:text="${c.capacidad}"></td>
-                                                        <td><a th:href="@{'/camion/findCamion/' + ${c.idCamion}}"><button type="button" class="btn btn-primary" value="Modificar"><i class="fa fa-pencil"></i></button></a></td>
-                                                        <td><a th:href="@{'/camion/deleteCamion/' + ${c.idCamion}}"><button type="button" class="btn btn-danger" value="Eliminar"><i class="fa fa-trash"></i></button></a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--MODAL PARA REGISTRO DE CAMIONES-->
-                                <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                                    <div role="document" class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 id="exampleModalLabel" class="modal-title">Nuevo Camión</h4>
-                                                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Ingrese los datos para registrar un Nuevo Camión</p>
-                                                <form th:action="@{/camion/unCamion}" th:object="${unCamion}" method="post">
-                                                    <div class="form-group">
-                                                        <label>Número de Carro</label>
-                                                        <input type="number" th:field="*{numeroCarro}" placeholder="Número Carro" class="form-control" required=""/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Número de Placas</label>
-                                                        <input type="text" th:field="*{numeroPlacas}" placeholder="Número Placas" class="form-control" required=""/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Capacidad</label>
-                                                        <input type="number" th:field="*{capacidad}" placeholder="Capacidad" class="form-control" required=""/>
-                                                    </div> 
-                                                    <div class="modal-footer">
-                                                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                                                        <input type="submit" class="btn btn-primary" value="Aceptar"/>
-                                                    </div>
-                                                </form>
-                                            </div>                                           
+                                            <form th:action="@{/camion/unCamion}" th:object="${editCamion}" method="post">
+                                                <div class="form-group">
+                                                    <label>Número de Carro</label>
+                                                    <input type="text" th:field="*{numeroCarro}" th:value="${numeroCarro}" placeholder="Número Carro" class="form-control" required=""/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Número de Placas</label>
+                                                    <input type="text" th:field="*{numeroPlacas}" th:value="${numeroPlacas}" placeholder="Número Placas" class="form-control" required=""/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Capacidad</label>
+                                                    <input type="text" th:field="*{capacidad}" th:value="${capacidad}" placeholder="Capacidad" class="form-control" required=""/>
+                                                </div> 
+                                                <div class="modal-footer">
+                                                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                                                    <input type="submit" class="btn btn-primary" value="Aceptar"/>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

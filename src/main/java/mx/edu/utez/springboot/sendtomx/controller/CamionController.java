@@ -44,7 +44,7 @@ public class CamionController {
     @GetMapping("findCamion/{id}")
     public String findCamion(@PathVariable Integer id, Model model) {
         model.addAttribute("editCamion", camionService.getCamionById(id));
-        return "modificar";
+        return "modificarCamion";
     }
 
     @GetMapping("deleteCamion/{id}")
