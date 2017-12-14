@@ -48,6 +48,49 @@ and open the template in the editor.
                 });
             });
         </script>
+        <!--VALIDACIONES DE FORMULARIO DE REGISTRO CAMIÓN-->
+        <script>
+            function validar() {
+                var numeroCarro = $("#numeroCarro").val();
+                var numeroPlacas = $("#numeroPlacas").val();
+                var capacidad = $("#capacidad").val();
+                if (isNaN(numeroCarro)) {
+                    swal({
+                        title: "¡Error!",
+                        text: "El Número de Carro ingresado no es válido\nIntroduce solo números para 'Número de Carro'",
+                        type: "error",
+                        confirmButtonText: "OK"
+                    });
+                    return false;
+                } else if (numeroPlacas.length > 10) {
+                    swal({
+                        title: "¡Error!",
+                        text: "El Número de Placas ingresado no es válido\nIntroduce un Número de Placas no mayor a 10 carácteres",
+                        type: "error",
+                        confirmButtonText: "OK"
+                    });
+                    return false;
+                } else if (isNaN(capacidad)) {
+                    swal({
+                        title: "¡Error!",
+                        text: "La Capacidad ingresada no es válida\nIntroduce solo números para 'Capacidad'",
+                        type: "error",
+                        confirmButtonText: "OK"
+                    });
+                    return false;
+                } else {
+                    swal({
+                        type: 'success',
+                        title: '¡Correcto!',
+                        text: 'El Camión ha sido registrado correctamente',
+                        showConfirmButton: false,
+                        timer: 10000
+                    })
+                    return true;
+                }
+            }
+        </script>
+        <!--FINALIZAN VALIDACIONES-->
     </head>
     <body>
         <div class="page charts-page">
@@ -65,9 +108,6 @@ and open the template in the editor.
                             </div>
                             <!-- Navbar Menu -->
                             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                                <!-- Search-->
-                                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>                                                                                          
-                                <!-- Logout    -->
                                 <li class="nav-item"><a href="login.html" class="nav-link logout">Cerrar Sesión<i class="fa fa-sign-out"></i></a></li>
                             </ul>
                         </div>
@@ -159,18 +199,18 @@ and open the template in the editor.
                                             </div>
                                             <div class="modal-body">
                                                 <p>Ingrese los datos para registrar un Nuevo Camión</p>
-                                                <form th:action="@{/camion/unCamion}" th:object="${unCamion}" method="post">
+                                                <form th:action="@{/camion/unCamion}" th:object="${unCamion}" method="post" onSubmit="return validar();">
                                                     <div class="form-group">
                                                         <label>Número de Carro</label>
-                                                        <input type="number" th:field="*{numeroCarro}" placeholder="Número Carro" class="form-control" required=""/>
+                                                        <input id="numeroCarro" type="text" th:field="*{numeroCarro}" class="form-control" required=""/>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Número de Placas</label>
-                                                        <input type="text" th:field="*{numeroPlacas}" placeholder="Número Placas" class="form-control" required=""/>
+                                                        <input id="numeroPlacas" type="text" th:field="*{numeroPlacas}" class="form-control" required=""/>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Capacidad</label>
-                                                        <input type="number" th:field="*{capacidad}" placeholder="Capacidad" class="form-control" required=""/>
+                                                        <input id="capacidad" name="capacidad" type="text" th:field="*{capacidad}" class="form-control" required=""/>
                                                     </div> 
                                                     <div class="modal-footer">
                                                         <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
@@ -212,20 +252,20 @@ and open the template in the editor.
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
         <!---->
         <script>
-            (function (b, o, i, l, e, r) {
-                b.GoogleAnalyticsObject = l;
-                b[l] || (b[l] =
-                        function () {
-                            (b[l].q = b[l].q || []).push(arguments)
-                        });
-                b[l].l = +new Date;
-                e = o.createElement(i);
-                r = o.getElementsByTagName(i)[0];
-                e.src = '//www.google-analytics.com/analytics.js';
-                r.parentNode.insertBefore(e, r)
-            }(window, document, 'script', 'ga'));
-            ga('create', 'UA-XXXXX-X');
-            ga('send', 'pageview');
+                                                    (function (b, o, i, l, e, r) {
+                                                        b.GoogleAnalyticsObject = l;
+                                                        b[l] || (b[l] =
+                                                                function () {
+                                                                    (b[l].q = b[l].q || []).push(arguments)
+                                                                });
+                                                        b[l].l = +new Date;
+                                                        e = o.createElement(i);
+                                                        r = o.getElementsByTagName(i)[0];
+                                                        e.src = '//www.google-analytics.com/analytics.js';
+                                                        r.parentNode.insertBefore(e, r)
+                                                    }(window, document, 'script', 'ga'));
+                                                    ga('create', 'UA-XXXXX-X');
+                                                    ga('send', 'pageview');
         </script>
     </body>
 </html>
