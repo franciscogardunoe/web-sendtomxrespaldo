@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <title>Bootstrap Dashboard by Bootstrapious.com</title>
+        <title>STMX | Maneja</title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="robots" content="all,follow"/>
@@ -55,9 +55,6 @@ and open the template in the editor.
                             </div>
                             <!-- Navbar Menu -->
                             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                                <!-- Search-->
-                                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>                                                                                          
-                                <!-- Logout    -->
                                 <li class="nav-item"><a href="login.html" class="nav-link logout">Cerrar Sesión<i class="fa fa-sign-out"></i></a></li>
                             </ul>
                         </div>
@@ -76,14 +73,11 @@ and open the template in the editor.
                         </div>
                     </div>
                     <!-- Sidebar Navidation Menus--><span class="heading">Menú Principal</span>
-                    <ul class="list-unstyled">
-                        <li class="active"> <a href="./"><i class="icon-home"></i>Inicio</a></li>                       
+                    <ul class="list-unstyled">                 
                         <li> <a th:href="@{/cliente/goCliente}"> <i class="fa fa-user"></i>Clientes</a></li>
-                        <li> <a th:href="@{/paquete/goPaquete}"> <i class="fa fa-briefcase"></i>Paquetes</a></li>
                         <li> <a th:href="@{/camion/goCamion}"> <i class="fa fa-bus"></i>Camiones</a></li>
                         <li> <a th:href="@{/operador/goOperador}"> <i class="fa fa-drivers-license"></i>Operadores</a></li>
-                        <li> <a th:href="@{/asignarCamion/goAsignacionCamion}">> <i class="fa fa-list"></i>Asignación Camiones</a></li>
-                        <li> <a th:href="@{/asignarPaquete/goAsignacionPaquete}"> <i class="fa fa-send"></i>Asignación Paquetes</a></li>
+                        <li> <a th:href="@{/asignarCamion/goAsignacionCamion}"><i class="fa fa-list"></i>Asignación Camiones</a></li>
                     </ul>
                 </nav>
                 <div class="content-inner">
@@ -166,7 +160,7 @@ and open the template in the editor.
                                                             <option th:each="o : ${unOperador}" th:value="${o.idOperador}" th:text="${o.nombre}"></option>
                                                         </select>
                                                     </div>
-                                                    
+
                                                     <div class="form-group">
                                                         <label>Camión</label>
                                                         <select th:field="*{idCamion.idCamion}" class="form-control">

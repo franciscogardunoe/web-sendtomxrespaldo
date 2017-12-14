@@ -65,7 +65,7 @@ and open the template in the editor.
                 } else if (numeroPlacas.length > 10) {
                     swal({
                         title: "¡Error!",
-                        text: "El Número de Placas ingresado no es válido\nIntroduce un Número de Placas no mayor a 10 carácteres",
+                        text: "El Número de Placas ingresado no es válido\nIntroduce un Número de Placas no mayor a 10 caracteres",
                         type: "error",
                         confirmButtonText: "OK"
                     });
@@ -79,13 +79,6 @@ and open the template in the editor.
                     });
                     return false;
                 } else {
-                    swal({
-                        type: 'success',
-                        title: '¡Correcto!',
-                        text: 'El Camión ha sido registrado correctamente',
-                        showConfirmButton: false,
-                        timer: 10000
-                    })
                     return true;
                 }
             }
@@ -126,14 +119,11 @@ and open the template in the editor.
                         </div>
                     </div>
                     <!-- Sidebar Navidation Menus--><span class="heading">Menú Principal</span>
-                    <ul class="list-unstyled">
-                        <li class="active"> <a href="./"><i class="icon-home"></i>Inicio</a></li>                       
+                    <ul class="list-unstyled">                 
                         <li> <a th:href="@{/cliente/goCliente}"> <i class="fa fa-user"></i>Clientes</a></li>
-                        <li> <a th:href="@{/paquete/goPaquete}"> <i class="fa fa-briefcase"></i>Paquetes</a></li>
                         <li> <a th:href="@{/camion/goCamion}"> <i class="fa fa-bus"></i>Camiones</a></li>
                         <li> <a th:href="@{/operador/goOperador}"> <i class="fa fa-drivers-license"></i>Operadores</a></li>
-                        <li> <a th:href="@{/asignarCamion/goAsignacionCamion}">> <i class="fa fa-list"></i>Asignación Camiones</a></li>
-                        <li> <a th:href="@{/asignarPaquete/goAsignacionPaquete}"> <i class="fa fa-send"></i>Asignación Paquetes</a></li>
+                        <li> <a th:href="@{/asignarCamion/goAsignacionCamion}"><i class="fa fa-list"></i>Asignación Camiones</a></li>
                     </ul>
                 </nav>
                 <div class="content-inner">
@@ -202,15 +192,15 @@ and open the template in the editor.
                                                 <form th:action="@{/camion/unCamion}" th:object="${unCamion}" method="post" onSubmit="return validar();">
                                                     <div class="form-group">
                                                         <label>Número de Carro</label>
-                                                        <input id="numeroCarro" type="text" th:field="*{numeroCarro}" class="form-control" required=""/>
+                                                        <input id="numeroCarro" type="text" th:field="*{numeroCarro}" placeholder="Número de Carro" class="form-control" required=""/>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Número de Placas</label>
-                                                        <input id="numeroPlacas" type="text" th:field="*{numeroPlacas}" class="form-control" required=""/>
+                                                        <input id="numeroPlacas" type="text" th:field="*{numeroPlacas}" placeholder="Número de Placas" class="form-control" required=""/>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Capacidad</label>
-                                                        <input id="capacidad" name="capacidad" type="text" th:field="*{capacidad}" class="form-control" required=""/>
+                                                        <input id="capacidad" name="capacidad" type="text" th:field="*{capacidad}" placeholder="Capacidad" class="form-control" required=""/>
                                                     </div> 
                                                     <div class="modal-footer">
                                                         <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
