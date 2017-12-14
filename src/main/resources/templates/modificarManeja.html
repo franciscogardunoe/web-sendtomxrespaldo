@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+
+        <form th:action="@{/asignarCamion/unManeja}" th:object="${editManeja}" method="post">
+            <input type="text" th:field="*{idManeja}" th:value="${idManeja}" class="form-control"/>
+
+            <label>Fecha de salida</label>
+            <input type="text" th:field="*{fechaSalida}" th:value="${fechaSalida}" class="form-control" required=""/>
+
+            <div class="form-group">
+                <label>Operador</label>
+                <select th:field="*{idOperador.idOperador}" class="form-control">
+                    <option th:each="o : ${unOperador}" th:value="${o.idOperador}" th:text="${o.nombre}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Camión</label>
+                <select th:field="*{idCamion.idCamion}" class="form-control">
+                    <option th:each="c : ${unCamion}" th:value="${c.idCamion}" th:text="${c.numeroPlacas}"></option>
+                </select>
+            </div>
+
+            <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            <input type="submit" class="btn btn-primary" value="Aceptar"/>
+
+        </form>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+
+        <form th:action="@{/operador/unOperador}" th:object="${editOperador}" method="post">
+           <input type="text" th:field="*{idOperador}" th:value="${idOperador}" class="form-control"/>
+                <label>Nombre</label>
+                <input type="text" th:field="*{nombre}" th:value="${nombre}" class="form-control" required=""/>
+            
+            
+                <label>Apellido 1</label>
+                <input type="text" th:field="*{apellido1}" th:value="${apellido1}" class="form-control" required=""/>
+            
+                <label>Apellido 2</label>
+                <input type="text" th:field="*{apellido2}" th:value="${apellido2}" class="form-control" required=""/>
+            
+                <label>RFC</label>
+                <input type="text" th:field="*{rfc}" th:value="${rfc}" class="form-control" required=""/>
+                
+                <label>NSS</label>
+                <input type="text" th:field="*{nss}" th:value="${nss}" class="form-control" required=""/>
+                
+                <label>Sueldo</label>
+                <input type="text" th:field="*{sueldo}" th:value="${sueldo}" class="form-control" required=""/>
+                
+                <label>Teléfono</label>
+                <input type="text" th:field="*{telefono}" th:value="${telefono}" class="form-control" required=""/>
+                
+                <label>Calle</label>
+                <input type="text" th:field="*{calle}" th:value="${calle}" class="form-control" required=""/>
+            
+                <label>Número Interior</label>
+                <input type="number" th:field="*{numeroInterior}" th:value="${numeroInterior}" class="form-control" required=""/>
+            
+                <label>Número Exterior</label>
+                <input type="number" th:field="*{numeroExterior}" th:value="${numeroExterior}" class="form-control" required=""/>
+            
+                <label>Colonia</label>
+                <input type="text" th:field="*{colonia}" th:value="${colonia}" class="form-control" required=""/>
+            
+                <label>Municipio</label>
+                <select th:field="*{idMunicipio.idMunicipio}" class="form-control">
+                    <option th:each="i : ${unMunicipio}" th:value="${i.idMunicipio}" th:text="${i.nombre}"></option>
+                </select>
+            
+                <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                <input type="submit" class="btn btn-primary" value="Aceptar"/>
+            
+        </form>
+    </body>
+</html>
